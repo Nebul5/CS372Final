@@ -20,10 +20,9 @@ private:
 	eType _type;
 	eType _damage;
 
-	attackEvent() = delete;
-
 public:
 	// ctr
+	attackEvent() = delete;
 	attackEvent(eType type, eType damage) :_type(type), _damage(damage) {};
 
 	// effect checks

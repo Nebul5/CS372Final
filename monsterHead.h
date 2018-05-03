@@ -22,11 +22,11 @@ public:
 	// ctr
 	monsterHead() { _neck = 0; };
 	monsterHead(const monsterHead & rhs) : _neck(rhs._neck), _monster(rhs._monster) {};
-	monsterHead(std::shared_ptr<bigMonster> monster, unsigned int neck) : _neck(neck), _monster(monster) {};
+	monsterHead(std::shared_ptr<bigMonster> monster, unsigned int neck) : _neck(neck), _monster(std::move(monster)) {};
 
 	// virtual functions
-	virtual void hit(attackEvent e);
-	virtual void injure(std::string injury);
+	void hit(attackEvent e) override;
+	void injure(std::string injury) override;
 };
 
 #endif

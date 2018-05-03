@@ -22,8 +22,8 @@ private:
 public:
 	// ctrs
 	bigMonster() { _maxHp = 0; _curHp = 0; _name = ""; };
-	bigMonster(std::string name, int hp) : _name(name), _maxHp(hp) { _curHp = hp; };
-	bigMonster(const bigMonster & rhs) : _name(rhs._name), _maxHp(rhs._maxHp), _curHp(rhs._curHp), _injuries(rhs._injuries) { };
+	bigMonster(std::string name, int hp) : _name(std::move(name)), _maxHp(hp) { _curHp = hp; };
+	bigMonster(const bigMonster & rhs) = default;
 
 	// virtual functions
 	virtual void hit(attackEvent e);

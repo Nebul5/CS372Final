@@ -22,11 +22,11 @@ public:
 	// ctr
 	monsterArm() { _strength = 0; };
 	monsterArm(const monsterArm & rhs) : _strength(rhs._strength), _monster(rhs._monster) {};
-	monsterArm(std::shared_ptr<bigMonster> monster, unsigned int strength) : _strength(strength), _monster(monster) {};
+	monsterArm(std::shared_ptr<bigMonster> monster, unsigned int strength) : _strength(strength), _monster(std::move(monster)) {};
 
 	// virtual functions
-	virtual void hit(attackEvent e);
-	virtual void injure(std::string injury);
+	void hit(attackEvent e) override;
+	void injure(std::string injury) override;
 };
 
 #endif

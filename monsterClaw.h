@@ -22,11 +22,11 @@ public:
 	// ctr
 	monsterClaw() { _impaled = false; };
 	monsterClaw(const monsterClaw & rhs) :_impaled(rhs._impaled), _arm(rhs._arm) {};
-	monsterClaw(std::shared_ptr<monsterArm> arm) : _arm(arm) { _impaled = false; };
+	monsterClaw(std::shared_ptr<monsterArm> arm) : _arm(std::move(arm)) { _impaled = false; };
 
 	// virtual functions
-	virtual void hit(attackEvent e);
-	virtual void injure(std::string injury);
+	void hit(attackEvent e) override;
+	void injure(std::string injury) override;
 };
 
 #endif

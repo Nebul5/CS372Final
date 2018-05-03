@@ -22,11 +22,11 @@ public:
 	// ctr
 	monsterEye() { _blind = false; };
 	monsterEye(const monsterEye & rhs) :_blind(rhs._blind), _head(rhs._head) {};
-	monsterEye(std::shared_ptr<monsterHead> head) : _head(head) { _blind = false; };
+	monsterEye(std::shared_ptr<monsterHead> head) : _head(std::move(head)) { _blind = false; };
 
 	// virtual functions
-	virtual void hit(attackEvent e);
-	virtual void injure(std::string injury);
+	void hit(attackEvent e) override;
+	void injure(std::string injury) override;
 };
 
 #endif
